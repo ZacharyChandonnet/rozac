@@ -7,9 +7,9 @@ import { company } from '../data/config';
 
 const Bar = styled.header`position:sticky;top:0;z-index:100;background:#fff;transition:box-shadow .25s;box-shadow:${p => p.$s ? '0 4px 20px rgba(0,0,0,.08)' : '0 0 0 rgba(0,0,0,0)'}`;
 const Row = styled(Container)`display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px`;
-const Logo = styled.a`text-decoration:none;display:flex;align-items:center;gap:10px;line-height:1;
-  b{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:${p => p.theme.colors.primary};font-size:1.4rem;font-weight:800}
-  span{font-weight:800;font-size:1.25rem;display:block} small{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:${p => p.theme.colors.muted}}`;
+const Logo = styled.a`text-decoration:none;display:inline-flex;align-items:center;justify-content:center;line-height:1;
+  img{display:block;width:90px;height:auto}
+  @media(min-width:${p => p.theme.bp.md}){img{width:110px}}`;
 const Nav = styled.nav`display:none;gap:28px;a{text-decoration:none;font-weight:600;padding:6px 0;border-bottom:2px solid transparent;&:hover{border-color:${p => p.theme.colors.primary}}}
   @media(min-width:${p => p.theme.bp.lg}){display:flex}`;
 const Right = styled.div`display:none;align-items:center;gap:18px;@media(min-width:${p => p.theme.bp.lg}){display:flex}`;
@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <Bar $s={scrolled}>
       <Row>
-        <Logo href="#accueil" aria-label="Rozac Plomberie, accueil"><b>R</b><div><span>Rozac</span><small>Plomberie</small></div></Logo>
+        <Logo href="#accueil" aria-label="Rozac Plomberie, accueil"><img src="/images/logo_rozac.svg" alt="Rozac Plomberie" /></Logo>
         <Nav aria-label="Navigation principale">{links.map(([l, h]) => <a key={h} href={h}>{l}</a>)}</Nav>
         <Right>
           <Tel href={company.phoneHref}><Phone size={18} aria-hidden /> {company.phone}</Tel>
